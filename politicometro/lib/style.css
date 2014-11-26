@@ -168,7 +168,6 @@ ul#menu .selected {
 
 
 /* ------ CONTEÚDO -------*/
-/*|||>>>> geral */
 #content {
 	position: absolute;
 	top: 47%;
@@ -189,5 +188,17 @@ ul#menu .selected {
 	bottom:0px;
 	z-index:8;
 	box-shadow: inset 0px 10px 5px -10px #000;
+}
+
+ul#rodape_text{
+	position: absolute;
+	padding: 15px 40px;
+	margin: 20px;
+}
+
+ul#rodape_text a, ul#rodape_text a:visited, ul#rodape_text a:link {
+    cursor:pointer;
+    color:#dee48f;
+    font-size: 18px;  
 }
 

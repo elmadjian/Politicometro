@@ -1,6 +1,6 @@
 	</div>
 	<div id="rodape">
-		<ul>
+		<ul id="rodape_text">
 			<li><a href="">Sobre</a></li>
 			<li><a href="">Equipe</a></li>
 			<li><a href="">Agradecimentos</a></li>
