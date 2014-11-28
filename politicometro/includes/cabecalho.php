@@ -25,7 +25,7 @@
 			<!-- Menu superior de opcoes -->
 			<ul id="menu">
 				<li id="menu_1"><a href="">rankings</a></li>
-				<li id="menu_2"><a href="">enviar proposta</a></li>
+				<li id="menu_2"><a href="enviar.php">enviar proposta</a></li>
 				<li id="menu_3"><a href="">em votação</a></li>
 				<li id="menu_4"><a href="">políticos</a></li>
 				<li id="menu_5"><a href="">propostas</a></li>
