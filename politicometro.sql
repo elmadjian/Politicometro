@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 26, 2014 at 11:14 PM
+-- Generation Time: Nov 29, 2014 at 12:02 AM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -30,7 +30,7 @@ CREATE TABLE `comentario` (
 `id` int(11) NOT NULL,
   `autor` varchar(32) NOT NULL COMMENT 'username',
   `mensagem` mediumtext NOT NULL,
-  `data` date NOT NULL
+  `data` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -42,7 +42,7 @@ CREATE TABLE `comentario` (
 CREATE TABLE `noticia` (
 `id` int(11) NOT NULL,
   `data` datetime NOT NULL,
-  `conteudo` mediumtext NOT NULL,
+  `conteudo` tinytext NOT NULL,
   `divulgador` varchar(32) NOT NULL COMMENT 'tem que ser username'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -70,9 +70,10 @@ CREATE TABLE `proposta` (
   `area` varchar(90) NOT NULL,
   `status` enum('cumprido','cumprindo','naoCumprido','') NOT NULL,
   `procedencia` tinyint(1) NOT NULL,
-  `classificacao` enum('subjetiva','objetiva','','') NOT NULL,
+  `classificacao` enum('subjetiva','objetiva','naoClassificada') NOT NULL,
   `proponente` int(11) NOT NULL COMMENT 'deve conter o registro do político',
-  `informante` varchar(90) NOT NULL
+  `informante` varchar(90) NOT NULL,
+  `descricao` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
