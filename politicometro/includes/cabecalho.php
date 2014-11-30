@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
 <head>
 	<meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+	<link rel="stylesheet" href="lib/pure-min.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="lib/style.css" type="text/css" media="screen" />
 	<!-- <script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>-->
 	<title>Politicômetro </title>

@@ -69,10 +69,6 @@ h4 {font-size: 21px; margin:0px 0px 18px; font-weight:400; line-height:10px;}
 h5 {font-size: 18px; margin:0px 0px 18px; font-weight:600;}
 h6 {font-size: 16px; margin:0px 0px 18px; font-weight:200;}
 p  {font-size: 14px; margin:0px 0px 18px; max-width:560px;}
-.tiny {font-size: 12px;	margin:0px 0px 18px; max-width:480px;}
-.legenda {margin-right:2px;	display:block;	margin-right:5px; float:left; vertical-align: text-bottom;}
-.legendataxon {vertical-align:text-bottom; font-size: 0.8em;}
-.titleText{font-weight:900; font-size:39px; text-shadow: 0px 0px 8px #428f9c;}
 b,strong {font-weight:900;}
 i,em {font-style:italic;}
 
@@ -176,6 +172,28 @@ ul#menu .selected {
 	max-width:55%;
 	padding-bottom: 200px;
 	z-index:7;
+}
+
+/*------- FORMS ----------*/
+fieldset {
+	border-top: 10px solid #74b974;
+	padding: 10px 20px;
+	min-width: 550px;
+}
+
+.legenda {
+
+}
+
+.campo {
+	margin: 5px;
+
+}
+.coluna {
+
+}
+#enviar_proposta_btn {
+	float: right;
 }
 
 
