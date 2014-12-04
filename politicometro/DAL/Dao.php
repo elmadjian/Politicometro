@@ -114,6 +114,7 @@ class Dao {
 	//5 - insere proposta no BD
 	//--------------------------------------------------------------
 	private function insert_proposta($data) {
+		print_r($data);
 		$query = "INSERT INTO proposta (area, status, procedencia, classificacao
                   proponente, informante, descricao, relevancia, fonte)
 		          VALUES ('{$data['area']}', '{$data['status']}', {$data['procedencia']}, 

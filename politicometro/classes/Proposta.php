@@ -22,14 +22,17 @@ class Proposta {
 	private $fonte;
 	
 	//=============== CONSTRUTOR =================
-	function __construct($politico, $descricao, $fonte, $cumprimento) {
+	function __construct($area, $politico, $informante, $descricao, $fonte) {
 		$this->dao = new Dao();
+		$this->areaAtuacao = $area;
+		$this->statusCumprimento = "naoClassificada";
+		$this->procedencia = false;
+		$this->classificacao = "naoClassificada";
 		$this->proponente = $politico;
+		$this->informante = $informante;
+		$this->relevancia = "naoClassificada";
 		$this->descricao = $descricao;
 		$this->fonte = $fonte;
-		$this->cumprimento = $cumprimento;
-		$this->procedencia = 0;
-		$this->relevancia = "";
 	}
 	
 	//=============== GETTERS ====================

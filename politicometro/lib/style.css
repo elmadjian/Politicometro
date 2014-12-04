@@ -127,6 +127,13 @@ a:hover{
 	color:#74b974; /*verde-claro*/
 }
 
+/*------ MENU DE LOGIN -----*/
+#login {
+	position: absolute;
+	right: 27px;
+	top: 15px;
+}
+
 
 /* ------ NAVEGACAO ------*/
 ul#menu {

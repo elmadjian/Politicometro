@@ -15,7 +15,8 @@ if (isset($_GET['enviado'])) {
 }
 else {
 ?>
-<form class="pure-form pure-form-aligned" action="enviar.php?enviado=1" method="post" enctype="multipart/form-data" id="enviar_proposta">
+<form class="pure-form pure-form-aligned" action="enviar.php?enviado=1" 
+method="post" enctype="multipart/form-data" id="enviar_proposta">
 	<fieldset>
 		<h2>Insira a proposta de um político:</h2>
 		<div class="pure-control-group">	
@@ -23,7 +24,7 @@ else {
 			<select class="campo" name="proponente" />
 				<?php
 					//LOOP para pegar uma lista de políticos e disponibilizar AQUI
-					echo "<option>Fulano da Silva Filho</option>" 
+					echo "<option>Fulano da Silva Filho</option>"; 
 				?>
 			</select>
 		</div>

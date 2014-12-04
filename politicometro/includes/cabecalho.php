@@ -23,6 +23,9 @@
 		
 		<!--  seletor de menu -->
 		<div id="navegacao">
+			<div id ="login" />
+				<p><a href="">login</a> | <a href="">cadastre-se</a></p>
+			</div>
 			<!-- Menu superior de opcoes -->
 			<ul id="menu">
 				<li id="menu_1"><a href="">rankings</a></li>
