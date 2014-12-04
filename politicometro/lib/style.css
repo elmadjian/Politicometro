@@ -182,14 +182,20 @@ ul#menu .selected {
 }
 
 /*------- FORMS ----------*/
+form {
+	background-color: #213856;
+	box-shadow: 0px 3px 7px 0px #000;
+	padding: 30px;
+	border-radius:10px;
+}
+
 fieldset {
 	border-top: 10px solid #74b974;
-	padding: 10px 20px;
 	min-width: 550px;
 }
 
 .legenda {
-
+	color:#74b974;
 }
 
 .campo {

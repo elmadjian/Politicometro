@@ -133,10 +133,10 @@ class Dao {
 	//6 - insere usuario no BD
 	//--------------------------------------------------------------
 	private function insert_usuario($data) {
-		$query = "INSERT INTO usuairo (login, senha, nome, email, tipo)
-		          VALUES ({$data['login']}, {$data['senha']}, {$data['nome']}, 
-		          {$data['email']}, {$data['tipo']})";
-		$resource = mysqli_query($this->connection, $query);
+		$query = "INSERT INTO usuario (login, senha, nome, email, tipo)
+		          VALUES ('{$data['login']}', '{$data['senha']}', '{$data['nome']}', 
+		          '{$data['email']}', '{$data['tipo']}')";
+		$resource = mysqli_query($this->connection, $query) or die(mysqli_error($this->connection));
 		if (!$resource)
 			return false;
 		return true;
@@ -145,7 +145,7 @@ class Dao {
 	
 	
 	//=============== RECUPERAÇÃO ===================
-	//1 - devolve todas as entradas que fazem match $field = $value
+	//1 - devolve todas as linhas que fazem match $field = $value
 	//------------------------------------------------
 	public function getData($table, $field, $value) {
 		
@@ -158,6 +158,22 @@ class Dao {
 				return $data;
 		}
 	}
+	
+	//2 - devolve todas as ocorrências em uma coluna que
+	//    fazem o match $field = $value
+	//------------------------------------------------
+	public function getDataFromColumn($column, $table, $field, $value) {
+		
+		$query = "SELECT {$column}
+				  FROM {$table}
+				  WHERE {$field} = '{$value}'";
+		$resource = mysqli_query($this->connection, $query);
+		if ($resource) {
+			while($data = mysqli_fetch_array($resource))
+				return $data;
+		}
+	}
+	
 	
 }
 

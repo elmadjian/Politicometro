@@ -50,7 +50,7 @@ method="post" enctype="multipart/form-data" id="enviar_proposta">
 			</select>
 		</div>
 		
-		<input type="submit" name="enviar" id="enviar_proposta_btn" class="pure-button" value="enviar" />
+		<input type="submit" name="enviar" id="enviar_proposta_btn" class="pure-button pure-button-primary" value="enviar" />
 		
 	</fieldset>
 </form>

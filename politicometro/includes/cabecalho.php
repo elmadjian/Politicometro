@@ -24,7 +24,7 @@
 		<!--  seletor de menu -->
 		<div id="navegacao">
 			<div id ="login" />
-				<p><a href="">login</a> | <a href="">cadastre-se</a></p>
+				<p><a href="login.php">login</a> | <a href="cadastrar.php">cadastre-se</a></p>
 			</div>
 			<!-- Menu superior de opcoes -->
 			<ul id="menu">
