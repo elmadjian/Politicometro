@@ -26,7 +26,7 @@ class Proposta {
 		$this->dao = new Dao();
 		$this->areaAtuacao = $area;
 		$this->statusCumprimento = "naoClassificada";
-		$this->procedencia = false;
+		$this->procedencia = 0;
 		$this->classificacao = "naoClassificada";
 		$this->proponente = $politico;
 		$this->informante = $informante;

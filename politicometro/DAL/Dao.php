@@ -17,6 +17,11 @@ class Dao {
 		$this->host = $host;
 		if (!$this->connection)
 			echo "ERRO ao tentar conectar ao banco de dados: ".mysql_error();
+		mysqli_query($this->connection, "SET NAMES 'utf8'");
+		mysqli_query($this->connection, 'SET character_set_connection=utf8');
+		mysqli_query($this->connection, 'SET character_set_client=utf8');
+		mysqli_query($this->connection, 'SET character_set_results=utf8');
+		
 	}
 	
 	//=============== CONEXÃO ====================
@@ -114,14 +119,12 @@ class Dao {
 	//5 - insere proposta no BD
 	//--------------------------------------------------------------
 	private function insert_proposta($data) {
-		print_r($data);
-		$query = "INSERT INTO proposta (area, status, procedencia, classificacao
-                  proponente, informante, descricao, relevancia, fonte)
+ 		$query = "INSERT INTO proposta (area, status, procedencia, classificacao,
+                  proponente, informante, relevancia, descricao, fonte)
 		          VALUES ('{$data['area']}', '{$data['status']}', {$data['procedencia']}, 
-		          '{$data['classificacao']}', '{$data['proponente']}', '{$data['informante']}',
-                  '{$data['descricao']}', '{$data['relevancia']}', '{$data['fonte']}')";
+		          '{$data['classificacao']}', '{$data['proponente']}', {$data['informante']},
+                  '{$data['relevancia']}', '{$data['descricao']}', '{$data['fonte']}')";
 		$resource = mysqli_query($this->connection, $query);
-		print_r($resource);
 		if (!$resource)
 			return false;
 		return true;

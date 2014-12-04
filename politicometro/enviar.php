@@ -4,11 +4,11 @@ require("classes/Proposta.php");
 
 if (isset($_GET['enviado'])) {
 	//cria uma proposta nova no BD
+	$are = $_POST['area'];
 	$pol = $_POST['proponente'];
 	$dsc = $_POST['descricao'];
 	$fnt = $_POST['fonte'];
-	$cmp = $_POST['status'];
-	$proposta = new Proposta($pol, $dsc, $fnt, $cmp);
+	$proposta = new Proposta($are, 2312311, 12345, $dsc, $fnt);
 	$proposta->insertPropostaBD();
 	
 	echo "<h2>formulario enviado!</h2>";
@@ -38,14 +38,15 @@ method="post" enctype="multipart/form-data" id="enviar_proposta">
 		</div>
 		<div class="pure-control-group">	
 			<label for="area" class="legenda">Área de atuação:</label>
-			<input type="text" class="campo" name="area" />
-		</div>
-		<div class="pure-control-group">	
-			<label for="status" class="legenda">Estágio de cumprimento:</label>	
-			<select class="campo" name="status" />
-				<option>Não cumprida</option>
-				<option>Cumprindo</option>
-				<option>Cumprida</option>
+			<select class="campo" name="area" />
+				<option>Saúde</option>
+				<option>Educação</option>
+				<option>Esportes</option>
+				<option>Cultura</option>
+				<option>Transportes</option>
+				<option>Energia</option>
+				<option>Infraestrutura</option>
+				<option>Outra</option>
 			</select>
 		</div>
 		
