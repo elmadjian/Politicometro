@@ -21,10 +21,12 @@ class TestDeUnidadeDao extends UnitTestCase {
     function testVerdadeAbsoluta() {
         $this->assertTrue(true);
        	echo 'testVerdadeAbsoluta executado<br>';
+        echo '------------------------------------------------<br>';
     }
     function testCriacaoDeObjeto() {
         $this->assertNotNull($this->dao);
         echo 'testCriacaoDeObjeto executado<br>';
+        echo '------------------------------------------------<br>';
     }
     
     //=============  SEGURANÇA  =================
@@ -34,6 +36,7 @@ class TestDeUnidadeDao extends UnitTestCase {
         //echo $retorno.'<br>';
         $this->assertIdentical($retorno, '\'echo \\\'teste\\\'\'');
         echo 'testMysqlCheck executado<br>';
+        echo '------------------------------------------------<br>';
     }
     //fazer mais testes de entrada
     function testClean() {
@@ -42,6 +45,7 @@ class TestDeUnidadeDao extends UnitTestCase {
         //echo $retorno.'<br>';
         $this->assertIdentical($retorno, 'echo  \'teste\''); //remove tag, mantem espacos.
         echo 'testClean executado<br>';
+        echo '------------------------------------------------<br>';
     }
     
     //=============== INSERÇÃO ===================
@@ -53,6 +57,7 @@ class TestDeUnidadeDao extends UnitTestCase {
 		);
         $this->assertTrue($this->dao->insert($dado, "comentario"));
         echo 'testInsert(comentario) executado<br>';
+        echo '------------------------------------------------<br>';
     }
     function testInsertNoticia() {
         $dado = array(
@@ -62,6 +67,7 @@ class TestDeUnidadeDao extends UnitTestCase {
 		);
         $this->assertTrue($this->dao->insert($dado, "noticia"));
         echo 'testInsert(noticia) executado<br>';
+        echo '------------------------------------------------<br>';
     }
     function testInsertPolitico() {
         $dado = array(
@@ -72,6 +78,7 @@ class TestDeUnidadeDao extends UnitTestCase {
 		);
         $this->assertTrue($this->dao->insert($dado, "politico"));
         echo 'testInsert(politico) executado<br>';
+        echo '------------------------------------------------<br>';
     }
     function testInsertProposta() {
         $dado = array(
@@ -87,6 +94,7 @@ class TestDeUnidadeDao extends UnitTestCase {
 		);
         $this->assertTrue($this->dao->insert($dado, "proposta"));
         echo 'testInsert(proposta) executado<br>';
+        echo '------------------------------------------------<br>';
     }
     function testInsertUsuario() {
         $dado = array(
@@ -98,12 +106,14 @@ class TestDeUnidadeDao extends UnitTestCase {
 		);
         $this->assertTrue($this->dao->insert($dado, "usuario"));
         echo 'testInsert(usuario) executado<br>';
+        echo '------------------------------------------------<br>';
     }
     //=============== REMOÇÃO ===================
     function testRemoveUsuario() {
         $dado = 'descricaoTeste(TestDeUnidadeDao)';
         $this->assertTrue($this->dao->remove($dado, "usuario"));
         echo 'testRemove(usuario) executado<br>';
+        echo '------------------------------------------------<br>';
     }
     
   

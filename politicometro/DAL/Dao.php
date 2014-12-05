@@ -221,25 +221,23 @@ class Dao {
 	//4 - remove político no BD
 	//--------------------------------------------------------------
 	private function remove_politico($data) {
-		/*$query = "INSERT INTO politico (nome, cargo, partido, registro)
-		          VALUES ({$data['nome']}, {$data['cargo']}, {$data['partido']}, 
-		          {$data['registro']})";
+		$query = "DELETE FROM politicometro.politico
+				  WHERE politico.registro = '{$value}'";
 		$resource = mysqli_query($this->connection, $query);
 		if (!$resource)
 			return false;
-		return true;*/
-		return false; //não implementado
+		return true;
 	}
 	
 	//5 - remove proposta no BD
 	//--------------------------------------------------------------
 	private function remove_proposta($data) {
- 		/*$query = "";
+ 		$query = "DELETE FROM politicometro.proposta
+				  WHERE proposta.id = '{$value}'"; //??? da pra pegar o id?
 		$resource = mysqli_query($this->connection, $query);
 		if (!$resource)
 			return false;
-		return true;*/
-		return false; //não implementado
+		return true;
 	}
 	
 	//6 - remove usuario do BD
@@ -254,8 +252,6 @@ class Dao {
 		return true;
 	
 	}
-	
-	/*"DELETE FROM `politicometro`.`usuario` WHERE `usuario`.`login` = \'descricaoTeste(TestDeUnidadeDao)\'"?*/
 	
 }
 
