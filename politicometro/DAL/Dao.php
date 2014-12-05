@@ -123,7 +123,7 @@ class Dao {
  		$query = "INSERT INTO proposta (area, status, procedencia, classificacao,
                   proponente, informante, relevancia, descricao, fonte)
 		          VALUES ('{$data['area']}', '{$data['status']}', {$data['procedencia']}, 
-		          '{$data['classificacao']}', '{$data['proponente']}', {$data['informante']},
+		          '{$data['classificacao']}', '{$data['proponente']}', '{$data['informante']}',
                   '{$data['relevancia']}', '{$data['descricao']}', '{$data['fonte']}')";
 		$resource = mysqli_query($this->connection, $query);
 		if (!$resource)
