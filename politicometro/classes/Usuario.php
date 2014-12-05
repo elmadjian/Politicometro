@@ -30,7 +30,6 @@ class Usuario {
 		if ($nome == 'none' || $email == 'none') {
 			$this->getUserBD($login);
 		}
-	
 	}
 	
 		
@@ -64,8 +63,12 @@ class Usuario {
 			'tipo'  => 'comum',
 			'senha' => $senha
 		);
-		if (!$this->dao->insert($usuario, 'usuario'))
-			echo "ERRO: não foi possível inserir o usuário no BD!";
+		if ($this->dao->insert($usuario, 'usuario')){
+			echo "ERRO: não foi possível inserir o usuário no BD!<br>";
+			//echo $this->dao->insert($usuario, 'usuario').'olha so, era uma tentativa de insercao<br>';
+			return false;
+		}
+		return true;
 	}
 	
 	//2 - acessa os dados cadastrados do usuário no BD

@@ -8,13 +8,15 @@
  
 require_once(dirname(__FILE__) . '/simpletest/autorun.php');
 require_once(dirname(__FILE__) .'/../classes/Usuario.php');
+require_once(dirname(__FILE__) .'/../DAL/Dao.php');
 
 class TestDeUnidadeUsuario extends UnitTestCase {
     private $usuario;    
     
     function __construct() {
         parent::__construct('Testes de Unidade : classe Usuario');
-        $this->usuario = new usuario(`testUserTest`);
+        $this->usuario = new usuario('testUserTest', 'Tester da Silva', 'ts@politicTest.com');
+        $this->dao = new dao();
     }
     //===============  VIDA  ====================
     function testVerdadeAbsoluta() {
@@ -31,54 +33,45 @@ class TestDeUnidadeUsuario extends UnitTestCase {
         echo '------------------------------------------------<br>';
     }
     //=============== GETTERS ====================
-   /* function testGetAreaAtuacao() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
-        $this->assertEqual($this->proposta->getAreaAtuacao(), 0);
-        echo 'testGetAreaAtuacao executado<br>';
+    function testGetNome() {
+        //$this->usuario = new usuario('testUserTest', 'Tester da Silva', 'ts@politicTest.com');
+        $this->assertIdentical($this->usuario->getNome(), "Tester da Silva");
+        echo 'testGetNome executado<br>';
         echo '------------------------------------------------<br>';
     }
-    function testGetStatusCumprimento() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
-        $this->assertIdentical($this->proposta->getStatusCumprimento(), "naoClassificada");
-        echo 'testGetStatusCumprimento executado<br>';
+    function testGetEmail() {
+        //$this->usuario = usuario('testUserTest', 'Tester da Silva', 'ts@politicTest.com');
+        $this->assertIdentical($this->usuario->getEmail(), "ts@politicTest.com");
+        echo 'testGetEmail executado<br>';
         echo '------------------------------------------------<br>';
     }
-    function testGetProcedencia() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
-        $this->assertIdentical($this->proposta->getProcedencia(), 0);
-        echo 'testGetProcedencia executado<br>';
+    function testGetLogin() {
+        //$this->usuario = usuario('testUserTest', 'Tester da Silva', 'ts@politicTest.com');
+        $this->assertIdentical($this->usuario->getLogin(), "testUserTest");
+        echo 'testGetLogin executado<br>';
         echo '------------------------------------------------<br>';
     }
-    function testGetProponente() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
-        $this->assertIdentical($this->proposta->getProponente(), "politico");
-        echo 'testGetProponente executado<br>';
+    //=============== ACESSO AO BD =================
+	//1 - cadastra usuário no banco de dados
+	//--------------------------------------------------------------
+	
+	function testInsereUserBD() {
+        //$this->usuario = usuario('testUserTest', 'Tester da Silva', 'ts@politicTest.com');
+        $this->assertTrue($this->usuario->insertUserBD('T3sInsert'));
+        echo 'testInsereUserBD executado<br>';
         echo '------------------------------------------------<br>';
     }
-    function testGetInformante() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
-        $this->assertIdentical($this->proposta->getInformante(), "informante");
-        echo 'testGetInformante executado<br>';
+    function testAutenticar() {
+        //$this->usuario = usuario('testUserTest', 'Tester da Silva', 'ts@politicTest.com');
+        $this->assertTrue($this->usuario->autenticar('T3sInsert'));
+        echo 'testAutenticar executado<br>';
         echo '------------------------------------------------<br>';
     }
-    function testGetRelevancia() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
-        $this->assertIdentical($this->proposta->getRelevancia(), "naoClassificada");
-        echo 'testGetRelevancia executado<br>';
+    function testGetTipo() {
+        //$this->usuario = usuario('testUserTest', 'Tester da Silva', 'ts@politicTest.com');
+        $this->assertTrue($this->usuario->getTipo('testUserTest'));
+        echo 'testGetTipo executado<br>';
         echo '------------------------------------------------<br>';
     }
-    function testGetDescricao() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
-        $this->assertIdentical($this->proposta->getDescricao(), "descricao");
-        echo 'testGetDescricao executado<br>';
-        echo '------------------------------------------------<br>';
-    }
-    function testGetFonte() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
-        $this->assertIdentical($this->proposta->getFonte(), "fonte");
-        echo 'testGetFonte executado<br>';
-        echo '------------------------------------------------<br>';
-    }*/
-
 }
 ?>
