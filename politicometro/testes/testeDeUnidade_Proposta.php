@@ -1,13 +1,22 @@
 <?php
+/*====================================================================
+ * 
+ * CLASSE: TestDeUnidadeProposta
+ * DESCRIÇÃO: executa os testes de unidade para a classe Proposta
+ * 
+ =====================================================================*/
+ 
 require_once(dirname(__FILE__) . '/simpletest/autorun.php');
-require_once('../classes/Proposta.php');
+require_once(dirname(__FILE__) .'/../classes/Proposta.php');
 
-class TestDeUnidade extends UnitTestCase {
+class TestDeUnidadeProposta extends UnitTestCase {
+    private $proposta;    
+    
     function __construct() {
         parent::__construct('Testes de Unidade : classe Proposta');
         $this->proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
     }
-
+    //===============  VIDA  ====================
     function testVerdadeAbsoluta() {
         $this->assertTrue(true);
         echo 'testVerdadeAbsoluta executado<br>';
@@ -16,6 +25,7 @@ class TestDeUnidade extends UnitTestCase {
         $this->assertNotNull($this->proposta);
         echo 'testCriacaoDeObjeto executado<br>';
     }
+    //=============== GETTERS ====================
     function testGetAreaAtuacao() {
         //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
         $this->assertEqual($this->proposta->getAreaAtuacao(), 0);

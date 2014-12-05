@@ -1,8 +1,15 @@
 <?php
-require_once(dirname(__FILE__) . '/simpletest/autorun.php');
-require_once('../classes/Politico.php');
+/*====================================================================
+ * 
+ * CLASSE: TestDeUnidadePolitico
+ * DESCRIÇÃO: executa os testes de unidade para a classe Politico
+ * 
+ =====================================================================*/
 
-class TestOfLogging extends UnitTestCase {
+require_once(dirname(__FILE__) . '/simpletest/autorun.php');
+require_once(dirname(__FILE__) .'/../classes/Politico.php');
+
+class TestDeUnidadePolitico extends UnitTestCase {
     function __construct() {
         parent::__construct('Testes de Unidade : classe Politico');
     }
