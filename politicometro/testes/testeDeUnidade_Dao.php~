@@ -102,6 +102,8 @@ class TestDeUnidadeDao extends UnitTestCase {
     //=============== REMOÇÃO ===================
     function testRemoveUsuario() {
         $dado = 'descricaoTeste(TestDeUnidadeDao)';
+        $retorno = $this->dao->remove($dado, "usuario");
+        echo $retorno.'<br>';
         $this->assertTrue($this->dao->remove($dado, "usuario"));
         echo 'testRemove(usuario) executado<br>';
     }

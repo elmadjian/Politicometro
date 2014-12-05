@@ -251,7 +251,7 @@ class Dao {
 		$resource = mysqli_query($this->connection, $query);
 		if (!$resource)
 			return false;
-		return true;
+		return true;*/
 	
 	}
 	
