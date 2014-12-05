@@ -45,7 +45,7 @@ class TestDeUnidadeUsuario extends UnitTestCase {
     }
     function testGetLogin() {
         //$this->usuario = new usuario(`testUserTest`);
-        echo $this->usuario->getLogin(). 'aquiii!<br>' ;
+        echo $this->usuario->getLogin(). 'aquiii!<br>;
         $this->assertIdentical($this->usuario->getLogin(), "testUserTest");
         echo 'testGetLogin executado<br>';
         echo '------------------------------------------------<br>';

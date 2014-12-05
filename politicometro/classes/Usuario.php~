@@ -27,7 +27,7 @@ class Usuario {
 		if ($nome == 'none' || $email == 'none') {
 			$this->getUserBD($login);
 		}
-		if($login === ''){ //nao deveria ter algo assim? para testar a validade do login com formato expecifico??
+		if($login === ''){ //nao deveria ter algo assim? para testar a validade do login?
 		   trigger_error("invalid login", E_RECOVERABLE_ERROR);
 		}
 	}
