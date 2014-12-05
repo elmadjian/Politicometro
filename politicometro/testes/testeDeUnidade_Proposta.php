@@ -100,31 +100,14 @@ class TestDeUnidadeProposta extends UnitTestCase {
         // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
         //$this->proposta = new proposta('Cultura', 15, "informante", "descricaoTestProposta de texto longo", "fonte de texto longo" );
         $retorno = $this->dao->getDataFromColumn('id','proposta', 'descricao', "descricaoTestProposta de texto longo");
-        $this->assertTrue($this->proposta->getPropostaBD(array_pop($retorno[0])));
+        $propostaId = array_pop($retorno[0]);
+        $this->assertTrue($this->proposta->getPropostaBD($propostaId));
         echo 'testGetPropostaBD executado<br>';
         echo '------------------------------------------------<br>';
         //limpando o BD
-        //$this->dao->remove('testUserTest', "proposta");
+        $this->dao->remove($propostaId, "proposta");
     }
     /*
-    	//2 - recupera proposta salva no BD
-	//----------------------------------------------------------
-	public function getPropostaBD($id) {
-		
-		$entrada = $this->dao->getData('proposta', 'id', $id);
-		$resource = array_pop($entrada);
-		if ($resource) {
-			$this->areaAtuacao = $resource['area'];
-			$this->statusCumprimento = $resource['status'];
-			$this->procedencia = $resource['procedencia'];
-			$this->classificacao = $resource['classificacao'];
-			$this->proponente = $resource['proponente'];
-			$this->informante = $resource['informante'];
-			$this->relevancia = $resource['relevancia'];
-			$this->descricao = $resource['descricao'];
-			$this->fonte = $resource['fonte'];
-		}
-	}
 	
 	//3 - verifica se uma proposta salva no BD tem campos
 	//    idênticos aos atributos da proposta atual
