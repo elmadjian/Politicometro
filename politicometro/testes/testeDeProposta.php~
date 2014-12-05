@@ -1,0 +1,25 @@
+<?php
+require_once(dirname(__FILE__) . '/simpletest/autorun.php');
+require_once('../classes/Proposta.php');
+
+class TestOfLogging extends UnitTestCase {
+    function __construct() {
+        parent::__construct('Testes de Unidade : classe Proposta');
+    }
+
+    function testVerdadeAbsoluta() {
+	echo 'testVerdadeAbsoluta executado<br>';
+        $this->assertTrue(true);
+    }
+    function testCriacaoDeObjeto() {
+       // $proposta = new proposta();
+        $this->assertTrue(true);
+    }
+
+/*
+
+*/
+
+
+}
+?>
