@@ -43,7 +43,7 @@ class Dao {
 	//--------------------------------------------------------------
 //	static function mysqlCheck($palavra) { You cannot use $this in a static method.
     function mysqlCheck($palavra) {
-		if ($this->connection) {
+		if ($this->connection) { //precisa disto?
 			if (get_magic_quotes_gpc())
 				$palavra = stripslashes($palavra);
 			if (!is_numeric($palavra))
