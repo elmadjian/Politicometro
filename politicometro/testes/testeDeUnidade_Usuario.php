@@ -72,6 +72,8 @@ class TestDeUnidadeUsuario extends UnitTestCase {
         $this->assertTrue($this->usuario->getTipo('testUserTest'));
         echo 'testGetTipo executado<br>';
         echo '------------------------------------------------<br>';
+        //limpando o BD
+        $this->dao->remove('testUserTest', "usuario");
     }
 }
 ?>
