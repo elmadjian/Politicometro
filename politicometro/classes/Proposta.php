@@ -96,6 +96,24 @@ class Proposta {
 		$this->dao->updateFieldBD('proposta', 'procedencia', $value, 'id', $this->id);
 	}
 	
+	//Define o status de cumprimento
+	public function setStatusCumprimento($value) {
+		$this->statusCumprimento = $value;
+		$this->dao->updateFieldBD('proposta', 'status', $value, 'id', $this->id);
+	}
+	
+	//Define a classificação da proposta
+	public function setClassificacao($value) {
+		$this->classificacao = $value;
+		$this->dao->updateFieldBD('proposta', 'classificacao', $value, 'id', $this->id);
+	}
+	
+	//Define a relevância da proposta
+	public function setRelevancia($value) {
+		$this->relevancia = $value;
+		$this->dao->updateFieldBD('proposta', 'relevancia', $value, 'id', $this->id);
+	}
+	
 	
 	//============= ACESSO AO BD =================
 	//1 - salva a proposta no BD
@@ -113,11 +131,8 @@ class Proposta {
 			'descricao'     => $this->descricao,
 			'fonte'         => $this->fonte
  		);
-		if (!$this->dao->insert($propostas, 'proposta')){
+		if (!$this->dao->insert($propostas, 'proposta'))
 			echo "ERRO: não foi possível inserir proposta no BD!";
-			return false;
-	    }
-	    return true;
 	}
 	
 	//2 - recupera proposta salva no BD
@@ -137,9 +152,7 @@ class Proposta {
 			$this->relevancia = $resource['relevancia'];
 			$this->descricao = $resource['descricao'];
 			$this->fonte = $resource['fonte'];
-			return true;
 		}
-		return false;
 	}
 	
 	//3 - verifica se uma proposta salva no BD tem campos

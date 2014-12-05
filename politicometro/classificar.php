@@ -1,13 +1,13 @@
 <?php 
 require_once(dirname(__FILE__)."/classes/Usuario.php");
-require_once(dirname(__FILE__)."/classes/Verificador.php");
+require_once(dirname(__FILE__)."/classes/Classificador.php");
 require_once(dirname(__FILE__)."/classes/Proposta.php");
 include(dirname(__FILE__)."/includes/cabecalho.php");
 
 
 ?> 
-<h2>Verificação de propostas</h2>
-<form class="nostyle" action="verificar.php" method="post">
+<h2>Classificação de propostas</h2>
+<form class="nostyle" action="classificar.php" method="post">
 	<table class="pure-table">
 	    <thead>
 	        <tr>
@@ -17,22 +17,23 @@ include(dirname(__FILE__)."/includes/cabecalho.php");
 	            <th>Submetida por</th>
 	            <th>Status</th>
 	            <th>Área de atuação</th>
-	            <th>Fonte</th>
-	            <th>Confirma procedência?</th>
+	            <th>Relevância</th>
+	            <th>Classificação</th>
+	            <th>Confirma?</th>
 	        </tr>
 	    </thead>
 	
 	    <tbody>
 <?php 
 
-	//Mostra as propostas verificáveis
+	//Mostra as propostas classificáveis
 	//===================================
 	$OK_ID = 0;
 	if (isset($_POST['OK_ID']))
 		$OK_ID = $_POST['OK_ID'];
 
 	$dao = new Dao();
-	$data = $dao->getDataFromColumn('id', 'proposta', 'procedencia', 0);
+	$data = $dao->getDataFromColumn('id', 'proposta', 'classificacao', 'naoClassificada');
 	$propostas = array();
 	foreach ($data as $proposta) {
 		$propostaAtual = new Proposta();
@@ -44,8 +45,8 @@ include(dirname(__FILE__)."/includes/cabecalho.php");
 	foreach ($propostas as $proposta) {	
 
 		if ($proposta->getID() == $OK_ID) {
-			$proposta->setProcedencia(1);
-			$proposta->setStatusCumprimento($_POST['status']);
+			$proposta->setClassificacao($_POST['classificacao']);
+			$proposta->setRelevancia($_POST['relevancia']);
 			continue;
 		}
 		$politico_res = $dao->getDataFromColumn('nome', 'politico', 'registro', 
@@ -60,13 +61,17 @@ include(dirname(__FILE__)."/includes/cabecalho.php");
 		     "<td>".$proposta->getDescricao()."</td>".
 		     "<td>".$politico."</td>".
 		     "<td>".$proposta->getInformante()."</td>".
-		     "<td><select class=\"campo\" name=\"status\"/>
-				<option>naoCumprido</option>
-				<option>cumprindo</option>
-				<option>cumprido</option>
-			    </select></td>".
+			 "<td>".$proposta->getStatusCumprimento()."</td>".
 			 "<td>".$proposta->getAreaAtuacao()."</td>".
-			 "<td>".$proposta->getFonte()."</td>".
+			 "<td><select class=\"campo\" name=\"relevancia\"/>
+				<option>baixa</option>
+				<option>media</option>
+				<option>alta</option>
+			 </select></td>".
+			 "<td><select class=\"campo\" name=\"classificacao\"/>
+				<option>subjetiva</option>
+				<option>objetiva</option>
+			 </select></td>".
 		     "<td> <button type=\"submit\" name=\"OK_ID\" value=\"{$proposta->getID()}\" ". 
 		     "class=\"pure-button pure-button-primary\">OK!</button></td>";
 	}

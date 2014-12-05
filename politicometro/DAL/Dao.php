@@ -248,7 +248,7 @@ class Dao {
 	
 	//5 - remove proposta no BD
 	//--------------------------------------------------------------
-	private function remove_proposta($value) {
+	private function remove_proposta($data) {
  		$query = "DELETE FROM politicometro.proposta
 				  WHERE proposta.id = '{$value}'"; //??? da pra pegar o id?
 		$resource = mysqli_query($this->connection, $query);
