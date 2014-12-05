@@ -1,5 +1,7 @@
 <?php
 require(dirname(__FILE__)."/classes/Usuario.php");
+require(dirname(__FILE__)."/classes/Verificador.php");
+require(dirname(__FILE__)."/classes/Classificador.php");
 include(dirname(__FILE__)."/includes/cabecalho.php");
 require(dirname(__FILE__)."/classes/Proposta.php");
 
