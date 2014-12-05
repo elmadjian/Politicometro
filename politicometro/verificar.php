@@ -1,29 +1,36 @@
 <?php 
-include(dirname(__FILE__)."/includes/cabecalho.php");
 require_once(dirname(__FILE__)."/classes/Usuario.php");
+require_once(dirname(__FILE__)."/classes/Verificador.php");
 require_once(dirname(__FILE__)."/classes/Proposta.php");
+include(dirname(__FILE__)."/includes/cabecalho.php");
+
 
 ?> 
 <h2>Verificação de propostas</h2>
-<table class="pure-table" action="index.php" method="post">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th class="large">Descrição da proposta</th>
-            <th>Político</th>
-            <th>Submetida por</th>
-            <th>Status</th>
-            <th>Área de atuação</th>
-            <th>Fonte</th>
-            <th>Verificar</th>
-        </tr>
-    </thead>
-
-    <tbody>
+<form class="nostyle" action="verificar.php" method="post">
+	<table class="pure-table">
+	    <thead>
+	        <tr>
+	            <th>#</th>
+	            <th class="large">Descrição da proposta</th>
+	            <th>Político</th>
+	            <th>Submetida por</th>
+	            <th>Status</th>
+	            <th>Área de atuação</th>
+	            <th>Fonte</th>
+	            <th>Verificar</th>
+	        </tr>
+	    </thead>
+	
+	    <tbody>
 <?php 
 
 	//Mostra as propostas verificáveis
 	//===================================
+	$OK_ID = 0;
+	if (isset($_POST['OK_ID']))
+		$OK_ID = $_POST['OK_ID'];	
+
 	$dao = new Dao();
 	$data = $dao->getDataFromColumn('id', 'proposta', 'procedencia', 0);
 	$propostas = array();
@@ -48,72 +55,14 @@ require_once(dirname(__FILE__)."/classes/Proposta.php");
 			 "<td>".$proposta->getAreaAtuacao()."</td>".
 			 "<td>".$proposta->getFonte()."</td>".
 		     "<td> <button type=\"submit\" name=\"{$proposta->getID()}\" ". 
-		     "class=\"pure-button pure-button-primary\">OK!</button></td>";
-		
-		
+		     "class=\"pure-button pure-button-primary\">OK!</button></td>";	
 	}
 	
-
-		/*<td>1</td>
-		<td>Honda</td>
-		<td>Accord</td>
-		<td>2009</td>
-		</tr>
-		
-		<tr>
-		<td>2</td>
-		<td>Toyota</td>
-		<td>Camry</td>
-		<td>2012</td>
-		</tr>
-		
-		<tr class="pure-table-odd">
-		<td>3</td>
-		<td>Hyundai</td>
-		<td>Elantra</td>
-		<td>2010</td>
-		</tr>
-		
-		<tr>
-		<td>4</td>
-		<td>Ford</td>
-		<td>Focus</td>
-		<td>2008</td>
-		</tr>
-		
-		<tr class="pure-table-odd">
-		<td>5</td>
-		<td>Nissan</td>
-		<td>Sentra</td>
-		<td>2011</td>
-		</tr>
-		
-		<tr>
-		<td>6</td>
-		<td>BMW</td>
-		<td>M3</td>
-		<td>2009</td>
-		</tr>
-		
-		<tr class="pure-table-odd">
-		<td>7</td>
-		<td>Honda</td>
-		<td>Civic</td>
-		<td>2010</td>
-		</tr>
-		
-		<tr>
-		<td>8</td>
-		<td>Kia</td>
-		<td>Soul</td>
-		<td>2010</td>
-		</tr>*/
-
 ?>
         
-    </tbody>
-</table>
-
+	    </tbody>
+	</table>
+</form>
 
 <?php 
 include("includes/rodape.php");
