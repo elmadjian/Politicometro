@@ -22,7 +22,8 @@ class Proposta {
 	private $fonte;
 	
 	//=============== CONSTRUTOR =================
-	function __construct($area, $politico, $informante, $descricao, $fonte) {
+	function __construct($area = 'none', $politico = 'none', $informante = 'none', 
+			$descricao = 'none', $fonte = 'none') {
 		$this->dao = new Dao();
 		$this->areaAtuacao = $area;
 		$this->statusCumprimento = "naoClassificada";
@@ -103,9 +104,18 @@ class Proposta {
 	
 	//2 - recupera proposta salva no BD
 	//----------------------------------------------------------
-	private function getPropostaBD() {
+	public function getPropostaBD($id) {
 		
-		
+		$resource = $this->dao->getData('proposta', 'id', $id);
+		$this->areaAtuacao = $resource['area'];
+		$this->statusCumprimento = $resource['status'];
+		$this->procedencia = $resource['procedencia'];
+		$this->classificacao = $resource['classificacao'];
+		$this->proponente = $resource['proponente'];
+		$this->informante = $resource['informante'];
+		$this->relevancia = $resource['relevancia'];
+		$this->descricao = $resource['descricao'];
+		$this->fonte = $resource['fonte'];
 	}
 	
 	//3 - verifica se uma proposta salva no BD tem campos

@@ -7,6 +7,7 @@
  *
 =====================================================================*/
 require_once(dirname(__FILE__).'/../DAL/Dao.php');
+require_once(dirname(__FILE__).'/Usuario.php');
 
 class Classificador extends Usuario {
 

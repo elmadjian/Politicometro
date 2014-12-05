@@ -1,4 +1,6 @@
 <?php 
+//require(dirname(__FILE__)."/classes/Classificador.php");
+//require(dirname(__FILE__)."/classes/Verificador.php");
 include(dirname(__FILE__)."/includes/cabecalho.php");
 require(dirname(__FILE__)."/classes/Usuario.php");
 

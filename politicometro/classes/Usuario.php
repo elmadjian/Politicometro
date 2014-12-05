@@ -7,8 +7,6 @@
  =====================================================================*/
 require_once(dirname(__FILE__).'/../DAL/Dao.php');
 
-class NotFoundException extends Exception {} // talvez criar uma classe de exceptions e importar.
-
 class Usuario {
 
 	private $dao;
@@ -23,13 +21,16 @@ class Usuario {
 		$this->email = $email;
 		$this->login = $login;
 		
+		//testa a validade do login
+		if($login === '') {
+			trigger_error("invalid login", E_RECOVERABLE_ERROR);
+		}
+		
 		//constrói usuário a partir do BD
 		if ($nome == 'none' || $email == 'none') {
 			$this->getUserBD($login);
 		}
-		if($login === ''){ //nao deveria ter algo assim? para testar a validade do login?
-		   trigger_error("invalid login", E_RECOVERABLE_ERROR);
-		}
+	
 	}
 	
 		
