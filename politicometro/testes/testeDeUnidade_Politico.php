@@ -23,13 +23,8 @@ class TestDeUnidadePolitico extends UnitTestCase {
        // $politco = new politico();
         $this->assertTrue(true);
     }
-
-/*function __construct() {
-		$this->dao = new Dao();
-	}
-	
 	//=============== GETTERS ====================
-	//devolve o cargo que o político ocupa atualmente
+/*	//devolve o cargo que o político ocupa atualmente
 	public function getCargo() {
 		return $this->cargo;
 	}

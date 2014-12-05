@@ -14,9 +14,12 @@ class TestDeUnidadeProposta extends UnitTestCase {
     
     function __construct() {
         parent::__construct('Testes de Unidade : classe Proposta');
-        $this->proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
+        // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
+        $this->proposta = new proposta('Cultura', 15, "informante", "descricao de texto longo", "fonte de texto longo" );
     }
     //===============  VIDA  ====================
+    //garantir: arear= char(90); politico= int(11), registro do politico;
+    //          informante = char (90); descricao= tinytext; fonte=tinytext.
     function testVerdadeAbsoluta() {
         $this->assertTrue(true);
         echo 'testVerdadeAbsoluta executado<br>';
@@ -29,92 +32,68 @@ class TestDeUnidadeProposta extends UnitTestCase {
     }
     //=============== GETTERS ====================
     function testGetAreaAtuacao() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
+        // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
+        //$this->proposta = new proposta('Cultura', 15, "informante", "descricao de texto longo", "fonte de texto longo" );
         $this->assertEqual($this->proposta->getAreaAtuacao(), 0);
         echo 'testGetAreaAtuacao executado<br>';
         echo '------------------------------------------------<br>';
     }
     function testGetStatusCumprimento() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
+        // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
+        //$this->proposta = new proposta('Cultura', 15, "informante", "descricao de texto longo", "fonte de texto longo" );
         $this->assertIdentical($this->proposta->getStatusCumprimento(), "naoClassificada");
         echo 'testGetStatusCumprimento executado<br>';
         echo '------------------------------------------------<br>';
     }
     function testGetProcedencia() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
+        // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
+        //$this->proposta = new proposta('Cultura', 15, "informante", "descricao de texto longo", "fonte de texto longo" );
         $this->assertIdentical($this->proposta->getProcedencia(), 0);
         echo 'testGetProcedencia executado<br>';
         echo '------------------------------------------------<br>';
     }
     function testGetProponente() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
-        $this->assertIdentical($this->proposta->getProponente(), "politico");
+        // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
+        //$this->proposta = new proposta('Cultura', 15, "informante", "descricao de texto longo", "fonte de texto longo" );
+        $this->assertEqual($this->proposta->getProponente(), 15);
         echo 'testGetProponente executado<br>';
         echo '------------------------------------------------<br>';
     }
     function testGetInformante() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
+        // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
+        //$this->proposta = new proposta('Cultura', 15, "informante", "descricao de texto longo", "fonte de texto longo" );
         $this->assertIdentical($this->proposta->getInformante(), "informante");
         echo 'testGetInformante executado<br>';
         echo '------------------------------------------------<br>';
     }
     function testGetRelevancia() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
+        // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
+        //$this->proposta = new proposta('Cultura', 15, "informante", "descricao de texto longo", "fonte de texto longo" );
         $this->assertIdentical($this->proposta->getRelevancia(), "naoClassificada");
         echo 'testGetRelevancia executado<br>';
         echo '------------------------------------------------<br>';
     }
     function testGetDescricao() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
-        $this->assertIdentical($this->proposta->getDescricao(), "descricao");
+        // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
+        //$this->proposta = new proposta('Cultura', 15, "informante", "descricao de texto longo", "fonte de texto longo" );
+        $this->assertIdentical($this->proposta->getDescricao(), "descricao de texto longo");
         echo 'testGetDescricao executado<br>';
         echo '------------------------------------------------<br>';
     }
     function testGetFonte() {
-        //$proposta = new proposta(0, "politico", "informante", "descricao", "fonte" );
-        $this->assertIdentical($this->proposta->getFonte(), "fonte");
+        // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
+        //$this->proposta = new proposta('Cultura', 15, "informante", "descricao de texto longo", "fonte de texto longo" );
+        $this->assertIdentical($this->proposta->getFonte(), "fonte de texto longo");
         echo 'testGetFonte executado<br>';
         echo '------------------------------------------------<br>';
     }
-
-/*
-	
 	//============= ACESSO AO BD =================
-	//1 - salva a proposta no BD
-	//----------------------------------------------------------
-	public function insertPropostaBD() {
-		
-		$propostas = array(
-			'area'          => $this->areaAtuacao,
-			'status'        => $this->statusCumprimento,
-			'procedencia'   => $this->procedencia,
-			'classificacao' => $this->classificacao,
-			'proponente'    => $this->proponente,
-			'informante'    => $this->informante,
-			'relevancia'    => $this->relevancia,
-			'descricao'     => $this->descricao,
-			'fonte'         => $this->fonte
- 		);
-		if (!$this->dao->insert($propostas, 'proposta'))
-			echo "ERRO: não foi possível inserir proposta no BD!";
-	}
-	
-	//2 - recupera proposta salva no BD
-	//----------------------------------------------------------
-	private function getPropostaBD() {
-		
-		
-	}
-	
-	//3 - verifica se uma proposta salva no BD tem campos
-	//    idênticos aos atributos da proposta atual
-	//----------------------------------------------------------
-	private function propostaIgualBD() {
-		
-	}
-
-*/
-
-
+	function testInsertPropostaBD() {
+        // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
+        //$this->proposta = new proposta('Cultura', 15, "informante", "descricao de texto longo", "fonte de texto longo" );
+        $this->assertIdentical($this->proposta->insertPropostaBD(), "fonte de texto longo");
+        echo 'testGetFonte executado<br>';
+        echo '------------------------------------------------<br>';
+    }
 }
 ?>
