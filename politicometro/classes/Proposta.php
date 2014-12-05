@@ -104,8 +104,11 @@ class Proposta {
 			'descricao'     => $this->descricao,
 			'fonte'         => $this->fonte
  		);
-		if (!$this->dao->insert($propostas, 'proposta'))
+		if (!$this->dao->insert($propostas, 'proposta')){
 			echo "ERRO: não foi possível inserir proposta no BD!";
+			return false;
+	    }
+	    return true;
 	}
 	
 	//2 - recupera proposta salva no BD
@@ -125,7 +128,9 @@ class Proposta {
 			$this->relevancia = $resource['relevancia'];
 			$this->descricao = $resource['descricao'];
 			$this->fonte = $resource['fonte'];
+			return true;
 		}
+		return false;
 	}
 	
 	//3 - verifica se uma proposta salva no BD tem campos
