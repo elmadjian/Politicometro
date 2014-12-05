@@ -29,7 +29,7 @@ include(dirname(__FILE__)."/includes/cabecalho.php");
 	//===================================
 	$OK_ID = 0;
 	if (isset($_POST['OK_ID']))
-		$OK_ID = $_POST['OK_ID'];	
+		$OK_ID = $_POST['OK_ID'];
 
 	$dao = new Dao();
 	$data = $dao->getDataFromColumn('id', 'proposta', 'procedencia', 0);
@@ -42,20 +42,28 @@ include(dirname(__FILE__)."/includes/cabecalho.php");
 	
 	$i = 0;
 	foreach ($propostas as $proposta) {	
+
+		if ($proposta->getID() == $OK_ID) {
+			$proposta->setProcedencia(1);
+			continue;
+		}
+		$politico_res = $dao->getDataFromColumn('nome', 'politico', 'registro', 
+			$proposta->getProponente());
+		$politico = array_pop($politico_res)['nome'];
+
 		if ($i %2 == 0)
 			echo "<tr class=\"table-odd\">";
 		else
-			echo "<tr>";
-		
+			echo "<tr>";	
 		echo "<td>".++$i."</td>".
 		     "<td>".$proposta->getDescricao()."</td>".
-		     "<td>".$proposta->getProponente()."</td>".
+		     "<td>".$politico."</td>".
 		     "<td>".$proposta->getInformante()."</td>".
 			 "<td>".$proposta->getStatusCumprimento()."</td>".
 			 "<td>".$proposta->getAreaAtuacao()."</td>".
 			 "<td>".$proposta->getFonte()."</td>".
-		     "<td> <button type=\"submit\" name=\"{$proposta->getID()}\" ". 
-		     "class=\"pure-button pure-button-primary\">OK!</button></td>";	
+		     "<td> <button type=\"submit\" name=\"OK_ID\" value=\"{$proposta->getID()}\" ". 
+		     "class=\"pure-button pure-button-primary\">OK!</button></td>";
 	}
 	
 ?>

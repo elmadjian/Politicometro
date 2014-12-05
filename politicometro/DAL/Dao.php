@@ -143,6 +143,17 @@ class Dao {
 		return true;
 	}
 	
+	//7 - altera um campo específico de uma tabela
+	//---------------------------------------------------------------
+	public function updateFieldBD($table, $field, $value, $id, $valueID) {
+		$query = "UPDATE {$table}
+		          SET {$field} = '{$value}'
+		          WHERE {$id} = '{$valueID}'";
+		$resource = mysqli_query($this->connection, $query);
+		if (!$resource)
+			return false;
+		return true;
+	}
 	
 	
 	//=============== RECUPERAÇÃO ===================

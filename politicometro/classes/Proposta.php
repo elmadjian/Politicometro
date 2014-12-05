@@ -88,6 +88,15 @@ class Proposta {
 		return $this->id;
 	}
 	
+	
+	//=============== SETTERS ====================
+	//Confirma a procedência da proposta
+	public function setProcedencia($value) {
+		$this->procedencia = $value;
+		$this->dao->updateFieldBD('proposta', 'procedencia', $value, 'id', $this->id);
+	}
+	
+	
 	//============= ACESSO AO BD =================
 	//1 - salva a proposta no BD
 	//----------------------------------------------------------
