@@ -5,8 +5,8 @@
  * DESCRIÇÃO: representa uma proposta de um político
  * 
  =====================================================================*/
-require_once('DAL/Dao.php');
-require_once('Politico.php');
+require_once(dirname(__FILE__).'/../DAL/Dao.php');
+require_once(dirname(__FILE__).'/Politico.php');
 
 class Proposta {
 	

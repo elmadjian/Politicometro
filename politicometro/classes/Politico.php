@@ -5,8 +5,8 @@
 * DESCRIÇÃO: representa uma entidade "político"
 *
 =====================================================================*/
-require_once('DAL/Dao.php');
-require_once('Proposta.php');
+require_once(dirname(__FILE__).'/../DAL/Dao.php');
+require_once(dirname(__FILE__).'/Proposta.php');
 
 class Politico {
 

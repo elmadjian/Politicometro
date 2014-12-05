@@ -26,7 +26,7 @@
 		<div id="navegacao">
 			<div id ="login" />
 				<?php 
-					if (isset($_GET['logado']))
+					if (isset($_SESSION['userID']))
 						echo "<p><a href=\"index.php?logout=1\">logout</a>";
 					else						 
 						echo "<p><a href=\"login.php\">login</a>";

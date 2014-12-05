@@ -1,6 +1,6 @@
 <?php 
-include("includes/cabecalho.php");
-require("classes/Usuario.php");
+include(dirname(__FILE__)."/includes/cabecalho.php");
+require(dirname(__FILE__)."/classes/Usuario.php");
 
 if (isset($_GET['enviado'])) {
 	//cria um usuário novo no BD

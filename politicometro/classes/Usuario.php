@@ -5,7 +5,7 @@
 * DESCRIÇÃO: representa uma entidade "usuário"
 *
 =====================================================================*/
-require_once('DAL/Dao.php');
+require_once(dirname(__FILE__).'/../DAL/Dao.php');
 
 class Usuario {
 

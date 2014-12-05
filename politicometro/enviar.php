@@ -1,18 +1,32 @@
 <?php
-include("includes/cabecalho.php");
-require("classes/Proposta.php");
+require(dirname(__FILE__)."/classes/Usuario.php");
+include(dirname(__FILE__)."/includes/cabecalho.php");
+require(dirname(__FILE__)."/classes/Proposta.php");
 
-if (isset($_GET['enviado'])) {
-	//cria uma proposta nova no BD
+//Irá inserir uma proposta política nova no DB
+//===============================
+if (isset($_GET['enviado']) && isset($_SESSION['userID'])) {
 	$are = $_POST['area'];
 	$pol = $_POST['proponente'];
 	$dsc = $_POST['descricao'];
 	$fnt = $_POST['fonte'];
-	$proposta = new Proposta($are, 2312311, 12345, $dsc, $fnt);
+	$usr = unserialize($_SESSION['userID']);
+	$proposta = new Proposta($are, 2312311, $usr->getLogin(), $dsc, $fnt);
 	$proposta->insertPropostaBD();
 	
 	echo "<h2>formulario enviado!</h2>";
 }
+
+//Usuário precisa ser registrado para inserir proposta
+//================================
+else if (!isset($_SESSION['userID']))
+	header("Location:login.php?enviar=1");
+
+
+//Formulário para envio. O usuário não preenche todos
+//os atributos da proposta. Parte dessa tarefa são de outros agentes
+//do sistema
+//================================
 else {
 ?>
 <form class="pure-form pure-form-aligned" action="enviar.php?enviado=1" 
