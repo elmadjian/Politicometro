@@ -123,7 +123,7 @@ class Proposta {
 			$this->fonte = $resource['fonte'];
 			return true;
 		}
-		return false;
+		return false
 	}
 	
 	//3 - verifica se uma proposta salva no BD tem campos

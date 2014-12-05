@@ -100,7 +100,7 @@ class TestDeUnidadeProposta extends UnitTestCase {
         // proposta = new proposta(AREA, POLITICO, INFORMANTE, DESCRICAO, FONTE );
         //$this->proposta = new proposta('Cultura', 15, "informante", "descricaoTestProposta de texto longo", "fonte de texto longo" );
         $retorno = $this->dao->getDataFromColumn('id','proposta', 'descricao', "descricaoTestProposta de texto longo");
-        $this->assertTrue($this->proposta->getPropostaBD(array_pop($retorno[0])));
+        $this->assertTrue($this->proposta->getPropostaBD(array_pop($retorno)));
         echo 'testGetPropostaBD executado<br>';
         echo '------------------------------------------------<br>';
         //limpando o BD
