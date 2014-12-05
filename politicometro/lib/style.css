@@ -209,13 +209,29 @@ fieldset {
 	float: right;
 }
 
+/*------ TABLES -----*/
+.pure-table {
+	background-color: #213856;
+	box-shadow: 0px 3px 7px 0px #000;
+	padding: 30px;
+	color:#dedede;
+}
+.pure-table thead {
+	background-color: #dee48f;
+}
+.pure-table .large {
+	min-width: 200px;
+}
+.table-odd{
+	background-color: #29466b;
+}
 
 /* ------ RODAPÉ -------*/
 #rodape {
 	background-color: #213856;
 	min-height:150px;
 	width:100%;
-	position:absolute;
+	position:fixed;
 	bottom:0px;
 	z-index:8;
 	box-shadow: inset 0px 10px 5px -10px #000;

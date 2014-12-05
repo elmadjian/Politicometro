@@ -49,7 +49,7 @@ action="cadastrar.php?enviado=1">
                 <input type="checkbox"> Eu li e concordo com os termos e condições do Politicômetro
             </label>
 
-            <button type="submit" class="pure-button pure-button-primary">Submit</button>
+            <button type="submit" class="pure-button pure-button-primary">Enviar</button>
         </div>
     </fieldset>
 </form>

@@ -106,16 +106,19 @@ class Proposta {
 	//----------------------------------------------------------
 	public function getPropostaBD($id) {
 		
-		$resource = $this->dao->getData('proposta', 'id', $id);
-		$this->areaAtuacao = $resource['area'];
-		$this->statusCumprimento = $resource['status'];
-		$this->procedencia = $resource['procedencia'];
-		$this->classificacao = $resource['classificacao'];
-		$this->proponente = $resource['proponente'];
-		$this->informante = $resource['informante'];
-		$this->relevancia = $resource['relevancia'];
-		$this->descricao = $resource['descricao'];
-		$this->fonte = $resource['fonte'];
+		$entrada = $this->dao->getData('proposta', 'id', $id);
+		$resource = array_pop($entrada);
+		if ($resource) {
+			$this->areaAtuacao = $resource['area'];
+			$this->statusCumprimento = $resource['status'];
+			$this->procedencia = $resource['procedencia'];
+			$this->classificacao = $resource['classificacao'];
+			$this->proponente = $resource['proponente'];
+			$this->informante = $resource['informante'];
+			$this->relevancia = $resource['relevancia'];
+			$this->descricao = $resource['descricao'];
+			$this->fonte = $resource['fonte'];
+		}
 	}
 	
 	//3 - verifica se uma proposta salva no BD tem campos

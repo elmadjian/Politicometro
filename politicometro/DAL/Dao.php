@@ -155,8 +155,10 @@ class Dao {
 				  WHERE {$field} = '{$value}'";
 		$resource = mysqli_query($this->connection, $query);
 		if ($resource) {
+			$entradas = array();
 			while ($data = mysqli_fetch_array($resource))
-				return $data;
+				array_push($entradas, $data);
+			return $entradas;
 		}
 	}
 	
@@ -170,8 +172,10 @@ class Dao {
 				  WHERE {$field} = '{$value}'";
 		$resource = mysqli_query($this->connection, $query);
 		if ($resource) {
+			$entradas = array();
 			while($data = mysqli_fetch_array($resource))
-				return $data;
+				array_push($entradas, $data);
+			return $entradas;
 		}
 	}
 	

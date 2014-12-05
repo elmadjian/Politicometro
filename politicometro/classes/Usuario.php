@@ -63,8 +63,8 @@ class Usuario {
 			'tipo'  => 'comum',
 			'senha' => $senha
 		);
-		if ($this->dao->insert($usuario, 'usuario')){
-			echo "ERRO: não foi possível inserir o usuário no BD!<br>";
+		if (!$this->dao->insert($usuario, 'usuario')) {
+			echo "ERRO: não foi possível inserir o usuário no BD!<br />";
 			//echo $this->dao->insert($usuario, 'usuario').'olha so, era uma tentativa de insercao<br>';
 			return false;
 		}
@@ -75,7 +75,8 @@ class Usuario {
 	//-------------------------------------------------------------
 	private function getUserBD($login) {
 		
-		$resource = $this->dao->getData('usuario', 'login', $login);
+		$entrada = $this->dao->getData('usuario', 'login', $login);
+		$resource = array_pop($entrada);
 		if ($resource) {
 			$this->nome  = $resource['nome'];
 			$this->email = $resource['email'];
@@ -88,7 +89,8 @@ class Usuario {
 	public function autenticar($senhaDesprotegida) {
 		
 		$senha = hash('sha512', $senhaDesprotegida);
-		$resource = $this->dao->getDataFromColumn('senha', 'usuario', 'login', $this->login);
+		$entrada = $this->dao->getDataFromColumn('senha', 'usuario', 'login', $this->login);
+		$resource = array_pop($entrada);
 		if (!$resource)
 			return false;
 		if ($senha != $resource['senha'])
@@ -100,7 +102,8 @@ class Usuario {
 	//-----------------------------------------------------------
 	public function getTipo() {
 
-		$resource = $this->dao->getDataFromColumn('tipo', 'usuario', 'login', $this->login);
+		$entrada = $this->dao->getDataFromColumn('tipo', 'usuario', 'login', $this->login);
+		$resource = array_pop($entrada);
 		if ($resource)
 			return $resource['tipo'];
 	}
