@@ -15,15 +15,16 @@ class Usuario {
 	private $login;
 
 	//=============== CONSTRUTOR =================
-	function __construct($nome = 'none', $email = 'none', $login = 'none') {
+	function __construct($login, $nome = 'none', $email = 'none') {
 		$this->dao = new Dao();
 		$this->nome = $nome;
 		$this->email = $email;
 		$this->login = $login;
 		
 		//constrói usuário a partir do BD
-		if ($nome == 'none' || $email == 'none' || $login == 'none')
-			$this->getUserDB();
+		if ($nome == 'none' || $email == 'none') {
+			$this->getUserBD($login);
+		}
 	}
 	
 		
@@ -63,9 +64,30 @@ class Usuario {
 	
 	//2 - acessa os dados cadastrados do usuário no BD
 	//-------------------------------------------------------------
-	private function getUserBD() {
+	private function getUserBD($login) {
 		
+		$resource = $this->dao->getData('usuario', 'login', $login);
+		if ($resource) {
+			$this->nome  = $resource['nome'];
+			$this->email = $resource['email'];
+			$this->login = $resource['login'];
+		}
 	}
+	
+	//3 - autentica o usuário por meio do BD
+	//------------------------------------------------------------
+	public function autenticar($senhaDesprotegida) {
+		
+		$senha = hash('sha512', $senhaDesprotegida);
+		$resource = $this->dao->getDataFromColumn('senha', 'usuario', 'login', $this->login);
+		if (!$resource)
+			return false;
+		if ($senha != $resource['senha'])
+			return false;
+		return true;
+	}
+	
+
 	
 	
 }

@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	ob_start();	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -24,7 +25,13 @@
 		<!--  seletor de menu -->
 		<div id="navegacao">
 			<div id ="login" />
-				<p><a href="login.php">login</a> | <a href="cadastrar.php">cadastre-se</a></p>
+				<?php 
+					if (isset($_GET['logado']))
+						echo "<p><a href=\"index.php?logout=1\">logout</a>";
+					else						 
+						echo "<p><a href=\"login.php\">login</a>";
+				?>
+				 | <a href="cadastrar.php">cadastre-se</a></p>
 			</div>
 			<!-- Menu superior de opcoes -->
 			<ul id="menu">

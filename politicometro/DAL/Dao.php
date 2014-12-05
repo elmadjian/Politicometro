@@ -136,7 +136,7 @@ class Dao {
 		$query = "INSERT INTO usuario (login, senha, nome, email, tipo)
 		          VALUES ('{$data['login']}', '{$data['senha']}', '{$data['nome']}', 
 		          '{$data['email']}', '{$data['tipo']}')";
-		$resource = mysqli_query($this->connection, $query) or die(mysqli_error($this->connection));
+		$resource = mysqli_query($this->connection, $query);
 		if (!$resource)
 			return false;
 		return true;
