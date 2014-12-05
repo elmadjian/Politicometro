@@ -1,0 +1,125 @@
+<?php
+/*====================================================================
+ * 
+ * CLASSE: TestDeUnidadeDao
+ * DESCRIÇÃO: executa os testes de unidade para a classe Dao
+ * 
+ =====================================================================*/
+
+require_once(dirname(__FILE__) . '/simpletest/autorun.php');
+require_once(dirname(__FILE__) . '/../DAL/Dao.php');
+
+class TestDeUnidadeDao extends UnitTestCase {
+    private $dao;
+
+    function __construct() {
+        parent::__construct('Testes de Unidade : classe Dao');
+        $this->dao = new Dao();
+    }
+    
+    //===============  VIDA  ====================
+    function testVerdadeAbsoluta() {
+        $this->assertTrue(true);
+       	echo 'testVerdadeAbsoluta executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    function testCriacaoDeObjeto() {
+        $this->assertNotNull($this->dao);
+        echo 'testCriacaoDeObjeto executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    
+    //=============  SEGURANÇA  =================
+    function testMysqlCheck() {
+        $entrada = 'echo \'teste\'';
+        $retorno = $this->dao->mysqlCheck($entrada);
+        //echo $retorno.'<br>';
+        $this->assertIdentical($retorno, '\'echo \\\'teste\\\'\'');
+        echo 'testMysqlCheck executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    //fazer mais testes de entrada
+    function testClean() {
+        $entrada = 'echo <tab> \'teste\'<br>';
+        $retorno = $this->dao->clean($entrada);
+        //echo $retorno.'<br>';
+        $this->assertIdentical($retorno, 'echo  \'teste\''); //remove tag, mantem espacos.
+        echo 'testClean executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    
+    //=============== INSERÇÃO ===================
+    function testInsertComentario() {
+        $dado = array(
+			'autor'  => 'classe:TestDeUnidadeDao ; rotina testInsertComentario',
+			'mensagem' => 'comentarioTeste(TestDeUnidadeDao)',
+			'data' => gettimeofday(true),
+		);
+        $this->assertTrue($this->dao->insert($dado, "comentario"));
+        echo 'testInsert(comentario) executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    function testInsertNoticia() {
+        $dado = array(
+			'divulgador'  => 'classe:TestDeUnidadeDao ; rotina testInsertNoticia',
+			'conteudo' => 'noticiaTeste(TestDeUnidadeDao)',
+			'data' => gettimeofday(true),
+		);
+        $this->assertTrue($this->dao->insert($dado, "noticia"));
+        echo 'testInsert(noticia) executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    function testInsertPolitico() {
+        $dado = array(
+			'nome'  => 'classe:TestDeUnidadeDao ; rotina testInsertPolitico',
+			'cargo' => 'politicoTeste(TestDeUnidadeDao)',
+			'partido' => 'partidoTeste(TestDeUnidadeDao)',
+			'registro' => 'registroTeste(TestDeUnidadeDao)',
+		);
+        $this->assertTrue($this->dao->insert($dado, "politico"));
+        echo 'testInsert(politico) executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    function testInsertProposta() {
+        $dado = array(
+			'descricao' => 'classe:TestDeUnidadeDao ; rotina testInsertPolitico',
+			'area'  => 'descricaoTeste(TestDeUnidadeDao)',
+			'status' => 'statusTeste(TestDeUnidadeDao)',
+			'procedencia' => 'procedenciaTeste(TestDeUnidadeDao)',
+			'classificacao' => 'classificacaoTeste(TestDeUnidadeDao)',
+			'proponente' => 'proponenteTeste(TestDeUnidadeDao)',
+			'informante' => 'informanteTeste(TestDeUnidadeDao)',
+			'relevancia' => 'rrelevanciaTeste(TestDeUnidadeDao)',
+			'fonte' => 'fonteTeste(TestDeUnidadeDao)',
+		);
+        $this->assertTrue($this->dao->insert($dado, "proposta"));
+        echo 'testInsert(proposta) executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    function testInsertUsuario() {
+        $dado = array(
+			'nome' => 'classe:TestDeUnidadeDao ; rotina testInsertPolitico',
+			'login'  => 'descricaoTeste(TestDeUnidadeDao)',
+			'senha' => 'statusTeste(TestDeUnidadeDao)',
+			'email' => 'procedenciaTeste(TestDeUnidadeDao)',
+			'tipo' => 'classificacaoTeste(TestDeUnidadeDao)',
+		);
+        $this->assertTrue($this->dao->insert($dado, "usuario"));
+        echo 'testInsert(usuario) executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    //=============== REMOÇÃO ===================
+    function testRemoveUsuario() {
+        $dado = 'descricaoTeste(TestDeUnidadeDao)';
+        $this->assertTrue($this->dao->remove($dado, "usuario"));
+        echo 'testRemove(usuario) executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    
+  
+
+}
+
+?>
+
+
