@@ -237,7 +237,7 @@ class Dao {
 	
 	//4 - remove político no BD
 	//--------------------------------------------------------------
-	private function remove_politico($data) {
+	private function remove_politico($value) {
 		$query = "DELETE FROM politicometro.politico
 				  WHERE politico.registro = '{$value}'";
 		$resource = mysqli_query($this->connection, $query);
@@ -248,7 +248,7 @@ class Dao {
 	
 	//5 - remove proposta no BD
 	//--------------------------------------------------------------
-	private function remove_proposta($data) {
+	private function remove_proposta($value) {
  		$query = "DELETE FROM politicometro.proposta
 				  WHERE proposta.id = '{$value}'"; //??? da pra pegar o id?
 		$resource = mysqli_query($this->connection, $query);
