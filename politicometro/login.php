@@ -1,7 +1,8 @@
 <?php 
 include(dirname(__FILE__)."/includes/cabecalho.php");
 require(dirname(__FILE__)."/classes/Usuario.php");
-
+require(dirname(__FILE__)."/classes/Verificador.php");
+require(dirname(__FILE__)."/classes/Classificador.php");
 ?> 
 
 <form class="pure-form pure-form-stacked" method="post" enctype="multipart/form-data" action="login.php">
@@ -31,8 +32,23 @@ if (isset($_POST['autenticar'])) {
 
 	//acessa dados do usuário no BD e tenta logar no sistema
 	$usuario = new Usuario($login);
-	if ($usuario->autenticar($senha)) {
-		$_SESSION['userID'] = serialize($usuario);
+	if ($usuario->autenticar($senha)) {	
+			
+		switch($usuario->getTipo()) {		
+			case 'administrador' : 
+				break; //TODO: cria administrador
+			case 'verificador'   :
+				$verificador = new Verificador($login);
+				$_SESSION['userID'] = serialize($verificador);
+				break;
+			case 'classificador':
+				$classificador = new Classificador($login);
+				$_SESSION['userID'] = serialize($classificador);
+				break;
+			default:
+				$_SESSION['userID'] = serialize($usuario);
+				break;			
+		}
 		
 		//retorna para página de inserção de proposta
 		if ($_SESSION['enviar']) {

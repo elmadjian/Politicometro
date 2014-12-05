@@ -8,7 +8,6 @@
 	<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
 	<link rel="stylesheet" href="lib/pure-min.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="lib/style.css" type="text/css" media="screen" />
-	<!-- <script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>-->
 	<title>Politicômetro </title>
 </head>
 	
@@ -25,11 +24,13 @@
 		<!--  seletor de menu -->
 		<div id="navegacao">
 			<div id ="login" />
-				<?php 
+				<?php
+					//============= definição de login/logout no menu ============== 
 					if (isset($_SESSION['userID']))
 						echo "<p><a href=\"index.php?logout=1\">logout</a>";
 					else						 
 						echo "<p><a href=\"login.php\">login</a>";
+					//==============================================================
 				?>
 				 | <a href="cadastrar.php">cadastre-se</a></p>
 			</div>
@@ -40,6 +41,16 @@
 				<li id="menu_3"><a href="">em votação</a></li>
 				<li id="menu_4"><a href="">políticos</a></li>
 				<li id="menu_5"><a href="">propostas</a></li>
+			<?php 
+				//======== aba especial para classificadores/verificadores ==========
+				if (isset($_SESSION['userID'])) {
+					$user = unserialize($_SESSION['userID']);
+					if ($user instanceof Verificador)
+						echo "<li id=\"menu_6\"><a href=\"verificar.php\">VERIFICAR</a></li>";
+					else if ($user instanceof Classificador)
+						echo "<li id=\"menu_6\"><a href=\"classificar.php\">CLASSIFICAR</a></li>";					
+				}
+			?>
 			</ul>
 		</div>
 	

@@ -1,10 +1,10 @@
 <?php
 /*====================================================================
  *
-* CLASSE: Politico
-* DESCRIÇÃO: representa uma entidade "político"
-*
-=====================================================================*/
+ * CLASSE: Politico
+ * DESCRIÇÃO: representa uma entidade "político"
+ *
+ =====================================================================*/
 require_once(dirname(__FILE__).'/../DAL/Dao.php');
 require_once(dirname(__FILE__).'/Proposta.php');
 

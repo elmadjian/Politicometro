@@ -1,10 +1,10 @@
 <?php
 /*====================================================================
  *
-* CLASSE: Usuario
-* DESCRIÇÃO: representa uma entidade "usuário"
-*
-=====================================================================*/
+ * CLASSE: Usuario
+ * DESCRIÇÃO: representa uma entidade "usuário"
+ *
+ =====================================================================*/
 require_once(dirname(__FILE__).'/../DAL/Dao.php');
 
 class Usuario {
@@ -85,6 +85,15 @@ class Usuario {
 		if ($senha != $resource['senha'])
 			return false;
 		return true;
+	}
+	
+	//4 - descobre qual o grau de acesso do usuário
+	//-----------------------------------------------------------
+	public function getTipo() {
+
+		$resource = $this->dao->getDataFromColumn('tipo', 'usuario', 'login', $this->login);
+		if ($resource)
+			return $resource['tipo'];
 	}
 	
 

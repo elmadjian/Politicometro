@@ -9,7 +9,7 @@ if (isset($_GET['enviado'])) {
 	$nome  = $_POST['nome_completo'];
 	$email = $_POST['email'];
 
-	$usuario = new Usuario($nome, $email, $login);
+	$usuario = new Usuario($login, $nome, $email);
 	$usuario->insertUserBD($senha);
 
 	echo "<h2>Usuário cadastrado com sucesso!</h2>";
