@@ -11,6 +11,7 @@ require_once(dirname(__FILE__).'/Politico.php');
 class Proposta {
 	
 	private $dao;
+	private $id;
 	private $areaAtuacao;
 	private $statusCumprimento;
 	private $procedencia;
@@ -82,6 +83,11 @@ class Proposta {
 		return $this->fonte;
 	}
 	
+	//devole o identificador único da proposta
+	public function getID() {
+		return $this->id;
+	}
+	
 	//============= ACESSO AO BD =================
 	//1 - salva a proposta no BD
 	//----------------------------------------------------------
@@ -112,6 +118,7 @@ class Proposta {
 		$entrada = $this->dao->getData('proposta', 'id', $id);
 		$resource = array_pop($entrada);
 		if ($resource) {
+			$this->id = $id;
 			$this->areaAtuacao = $resource['area'];
 			$this->statusCumprimento = $resource['status'];
 			$this->procedencia = $resource['procedencia'];
