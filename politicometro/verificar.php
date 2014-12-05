@@ -5,7 +5,7 @@ require_once(dirname(__FILE__)."/classes/Proposta.php");
 
 ?> 
 <h2>Verificação de propostas</h2>
-<table class="pure-table">
+<table class="pure-table" action="index.php" method="post">
     <thead>
         <tr>
             <th>#</th>
@@ -34,8 +34,7 @@ require_once(dirname(__FILE__)."/classes/Proposta.php");
 	}
 	
 	$i = 0;
-	foreach ($propostas as $proposta) {
-		
+	foreach ($propostas as $proposta) {	
 		if ($i %2 == 0)
 			echo "<tr class=\"table-odd\">";
 		else
@@ -48,7 +47,8 @@ require_once(dirname(__FILE__)."/classes/Proposta.php");
 			 "<td>".$proposta->getStatusCumprimento()."</td>".
 			 "<td>".$proposta->getAreaAtuacao()."</td>".
 			 "<td>".$proposta->getFonte()."</td>".
-		     "<td> <button type=\"submit\" class=\"pure-button pure-button-primary\">OK!</button></td>";
+		     "<td> <button type=\"submit\" name=\"{$proposta->getID()}\" ". 
+		     "class=\"pure-button pure-button-primary\">OK!</button></td>";
 		
 		
 	}
