@@ -14,6 +14,7 @@ class TestDeUnidadePolitico extends UnitTestCase {
         parent::__construct('Testes de Unidade : classe Politico');
     }
 
+    //===============  VIDA  ====================
     function testVerdadeAbsoluta() {
 	echo 'testVerdadeAbsoluta executado<br>';
         $this->assertTrue(true);
