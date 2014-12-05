@@ -73,5 +73,18 @@ class TestDeUnidadeUsuario extends UnitTestCase {
         echo 'testGetTipo executado<br>';
         echo '------------------------------------------------<br>';
     }
+    
+	/*
+	
+	//4 - descobre qual o grau de acesso do usuário
+	//-----------------------------------------------------------
+	public function getTipo() {
+
+		$resource = $this->dao->getDataFromColumn('tipo', 'usuario', 'login', $this->login);
+		if ($resource)
+			return $resource['tipo'];
+	}
+
+*/
 }
 ?>
