@@ -190,6 +190,21 @@ class Dao {
 		}
 	}
 	
+	//3 - devolve todos os elementos da coluna XX de uma tabela
+	//-------------------------------------------------
+	public function getColumn($table, $column) {
+	
+		$query = "SELECT {$column}
+		FROM {$table}";
+		$resource = mysqli_query($this->connection, $query);
+		if ($resource) {
+		$entradas = array();
+		while($data = mysqli_fetch_array($resource))
+			array_push($entradas, $data);
+			return $entradas;
+		}
+	}
+	
 	
 	
 	//=============== REMOÇÃO ===================

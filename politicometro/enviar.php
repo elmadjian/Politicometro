@@ -39,8 +39,13 @@ method="post" enctype="multipart/form-data" id="enviar_proposta">
 			<label for="proponente" class="legenda">Nome do político:</label>
 			<select class="campo" name="proponente" />
 				<?php
-					//LOOP para pegar uma lista de políticos e disponibilizar AQUI
-					echo "<option>Fulano da Silva Filho</option>"; 
+					//pegando a lista de políticos
+					$dao = new Dao();
+					$data = $dao->getColumn('politico', 'nome');
+					foreach ($data as $politico_res) {
+						$politico = $politico_res['nome'];
+						echo "<option>{$politico}</option>";
+					} 
 				?>
 			</select>
 		</div>

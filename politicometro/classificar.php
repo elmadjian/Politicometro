@@ -22,7 +22,6 @@ include(dirname(__FILE__)."/includes/cabecalho.php");
 	            <th>Confirma?</th>
 	        </tr>
 	    </thead>
-	
 	    <tbody>
 <?php 
 
