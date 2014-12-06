@@ -12,11 +12,21 @@ class Dao {
 	private $host;
 	
 	//=============== CONSTRUTOR =================
-	function __construct($host = 'localhost') {
-		$this->connection = $this->connectDB();
-		$this->host = $host;
-		if (!$this->connection)
-			echo "ERRO ao tentar conectar ao banco de dados: ".mysql_error();
+	function __construct() {
+		
+		if (!isset($GLOBALS['connection'])) {	
+			//****** IMPORTANTE: configurações da conta MYSQL AQUI! ****//
+			$this->host = 'mysql4.000webhost.com';
+			$this->connection = $this->connectDB('a5091158_guest', 'guest123');
+			$GLOBALS['connection'] = $this->connection;
+			//**********************************************************//
+		}
+		else if (isset($GLOBALS['connection']))
+			$this->connection = $GLOBALS['connection'];
+		else {
+			echo "ERRO ao tentar conectar neste banco de dados";
+			die();
+		}
 		mysqli_query($this->connection, "SET NAMES 'utf8'");
 		mysqli_query($this->connection, 'SET character_set_connection=utf8');
 		mysqli_query($this->connection, 'SET character_set_client=utf8');
@@ -28,10 +38,13 @@ class Dao {
 	//1 - conecta ao DB e devolve o link da conexão, se bem-sucedida
 	//--------------------------------------------------------------
 	private function connectDB($user = 'guest', $password = 'guest') {
+		
 		$connection = mysqli_connect($this->host, $user, $password);
 		if (!$connection)
 			return false;
-		if (!mysqli_select_db($connection, 'politicometro'))
+		//****** IMPORTANTE: configurações da conta MYSQL AQUI! ****//
+		if (!mysqli_select_db($connection, 'a5091158_pol'))
+		//**********************************************************//
 			return false;
 		return $connection;
 	}

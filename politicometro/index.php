@@ -20,7 +20,7 @@ if (isset($_GET['logout'])) {
 
 ?> 
 
-<p>RANKING!</p>
+<h3>[placeholder para o ranking geral dos políticos]</h3>
 
 <?php 
 include("includes/rodape.php");

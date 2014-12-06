@@ -50,7 +50,8 @@ include(dirname(__FILE__)."/includes/cabecalho.php");
 		}
 		$politico_res = $dao->getDataFromColumn('nome', 'politico', 'registro', 
 			$proposta->getProponente());
-		$politico = array_pop($politico_res)['nome'];
+		$politico = array_pop($politico_res);
+		$politico = $politico['nome'];
 
 		if ($i %2 == 0)
 			echo "<tr class=\"table-odd\">";
