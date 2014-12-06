@@ -109,6 +109,28 @@ class TestDeUnidadeDao extends UnitTestCase {
         echo 'testInsert(usuario) executado<br>';
         echo '------------------------------------------------<br>';
     }
+    //=============== RECUPERAÇÃO ===================
+    function testGetData() {
+        $dado = 'descricaoTeste(TestDeUnidadeDao)';
+        $retorno = $this->dao->getData("usuario", 'login', $dado);
+        $this->assertNotNull(array_pop($retorno));
+        echo 'testGetData(usuario) executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    function testGetDataFromColumn() {
+        $dado = 'classe:TestDeUnidadeDao ; rotina testInsertPolitico';
+        $retorno = $this->dao->getDataFromColumn('id','proposta', 'descricao', $dado);
+        $this->assertNotNull(array_pop($retorno));
+        echo 'testGetDataFromColumn(proposta) executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    function testGetColumn() {
+        $retorno = $this->dao->getColumn('politico', 'nome');
+        $this->assertNotNull(array_pop($retorno));
+        echo 'testGetColumn(politico) executado<br>';
+        echo '------------------------------------------------<br>';
+    }
+    
     //=============== REMOÇÃO ===================
     function testRemoveUsuario() {
         $dado = 'descricaoTeste(TestDeUnidadeDao)';
@@ -116,20 +138,18 @@ class TestDeUnidadeDao extends UnitTestCase {
         echo 'testRemove(usuario) executado<br>';
         echo '------------------------------------------------<br>';
     }
-  /*  function testRemovePolitico() {
-        $dado = 'descricaoTeste(TestDeUnidadeDao)';
+    function testRemovePolitico() {
+        $dado = 696969;
         $this->assertTrue($this->dao->remove($dado, "politico"));
-        echo 'testRemove(usuario) executado<br>';
+        echo 'testRemove(politico) executado<br>';
         echo '------------------------------------------------<br>';
     }
     function testRemoveProposta() {
-        $dado = 'descricaoTeste(TestDeUnidadeDao)';
-        $this->assertTrue($this->dao->remove($dado, "proposta"));
-        echo 'testRemove(usuario) executado<br>';
+        $this->assertNotNull($retorno = $this->dao->getDataFromColumn('id','proposta', 'descricao', 'classe:TestDeUnidadeDao ; rotina testInsertPolitico'));
+        $this->assertTrue($this->dao->remove(array_pop($retorno[0]), "proposta"));
+        echo 'testRemove(proposta) executado<br>';
         echo '------------------------------------------------<br>';
     }
-    */
-  
 
 }
 
