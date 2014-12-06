@@ -18,8 +18,9 @@ class Politico {
 	private $propostas;
 
 	//=============== CONSTRUTOR =================
-	function __construct() {
+	function __construct($registro) {
 		$this->dao = new Dao();
+		$this->loadAtributosBD($registro);
 	}
 	
 	//=============== GETTERS ====================
@@ -54,6 +55,23 @@ class Politico {
 	private function getPropostasBD() {
 		
 		
+	}
+	
+	//2 - pega todas as propostas de um político e coloca numa lista
+	//--------------------------------------------------------------
+	private function loadAtributosBD($registro) {
+		
+		$retorno = $this->dao->getDataFromColumn('nome','politico', 'registro', $registro);
+		$this->nome = array_pop(array_pop($retorno));
+
+        $retorno = $this->dao->getDataFromColumn('cargo','politico', 'registro', $registro);
+		$this->cargo = array_pop(array_pop($retorno));
+
+        $retorno = $this->dao->getDataFromColumn('partido','politico', 'registro', $registro);
+		$this->partido = array_pop(array_pop($retorno));
+
+        $retorno = $this->dao->getDataFromColumn('registro','politico', 'registro', $registro);
+		$this->registro = array_pop(array_pop($retorno));
 	}
 	
 	

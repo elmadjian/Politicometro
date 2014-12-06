@@ -122,7 +122,7 @@ class Dao {
 	//--------------------------------------------------------------
 	private function insert_politico($data) {
 		$query = "INSERT INTO politico (nome, cargo, partido, registro)
-		          VALUES ({$data['nome']}, {$data['cargo']}, {$data['partido']}, 
+		          VALUES ('{$data['nome']}', '{$data['cargo']}', '{$data['partido']}', 
 		          {$data['registro']})";
 		$resource = mysqli_query($this->connection, $query);
 		if (!$resource)
